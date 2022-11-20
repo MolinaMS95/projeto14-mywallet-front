@@ -15,6 +15,7 @@ export default function SignUp() {
     password: "",
   });
   const [disabled, setDisabled] = useState(false);
+  const [confirm, setConfirm] = useState("");
   const navigate = useNavigate();
 
   function handleForm(event) {
@@ -23,6 +24,14 @@ export default function SignUp() {
 
   function createAccount(event) {
     event.preventDefault();
+    if (form.password !== confirm) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "A senha não corresponde!",
+      });
+      return;
+    }
     setDisabled(true);
     axios
       .post(urls.signup, form)
@@ -45,7 +54,7 @@ export default function SignUp() {
     <Body color={colors.body}>
       <Title color={colors.text}>MyWallet</Title>
       <Forms submit={createAccount} isDisabled={disabled}>
-      <input
+        <input
           name="name"
           placeholder="Nome"
           onChange={handleForm}
@@ -61,7 +70,6 @@ export default function SignUp() {
           required
         />
         <input
-         
           name="password"
           type="password"
           placeholder="Senha"
@@ -72,7 +80,7 @@ export default function SignUp() {
         <input
           name="confirm"
           type="url"
-          onChange={handleForm}
+          onChange={(event) => setConfirm(event.target.value)}
           placeholder="Confirme a senha"
           disabled={disabled}
           required
@@ -94,10 +102,7 @@ export default function SignUp() {
           )}
         </button>
       </Forms>
-      <LoginLink
-        to="/"
-        color={colors.text}
-      >
+      <LoginLink to="/" color={colors.text}>
         Já tem uma conta? Entre agora!
       </LoginLink>
     </Body>

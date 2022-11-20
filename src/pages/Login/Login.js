@@ -46,7 +46,7 @@ export default function Login() {
   }
 
   return (
-    <Body color={colors.body}>
+    <>
       <Title color={colors.text}>MyWallet</Title>
       <Forms submit={login} isDisabled={disabled}>
         <input
@@ -87,18 +87,9 @@ export default function Login() {
           Primeira vez? Cadastre-se!
         </SignUpLink>
       </div>
-    </Body>
+    </>
   );
 }
-
-const Body = styled.div`
-  background-color: ${(props) => props.color};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  height: 100vh;
-`;
 
 const Title = styled.h1`
   font-family: "Saira Stencil One", cursive;
