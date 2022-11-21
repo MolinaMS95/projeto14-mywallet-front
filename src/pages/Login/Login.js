@@ -29,16 +29,13 @@ export default function Login() {
       .post(urls.login, form)
       .then((response) => {
         setUser(response.data);
-        navigate("/registers");
+        navigate("/registros");
       })
       .catch((error) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text:
-            error.response.status === 422
-              ? error.response.data.details[0]
-              : error.response.data.message,
+          text: error.response.data,
           footer: `Error status ${error.response.status}`,
         });
         setDisabled(false);

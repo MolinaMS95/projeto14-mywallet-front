@@ -40,10 +40,7 @@ export default function SignUp() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text:
-            error.response.status === 422
-              ? error.response.data.details[0]
-              : error.response.data.message,
+          text: error.response.data,
           footer: `Error status ${error.response.status}`,
         });
         setDisabled(false);
@@ -79,7 +76,7 @@ export default function SignUp() {
         />
         <input
           name="confirm"
-          type="url"
+          type="password"
           onChange={(event) => setConfirm(event.target.value)}
           placeholder="Confirme a senha"
           disabled={disabled}
