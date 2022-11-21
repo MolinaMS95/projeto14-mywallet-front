@@ -1,3 +1,7 @@
-const urls = { login: "http://localhost:5000/login", signup: "http://localhost:5000/signup", registers: "http://localhost:5000/registers"};
+const urls = {
+  login: "https://mywallet-api-5yz9.onrender.com/login",
+  signup: "https://mywallet-api-5yz9.onrender.com/signup",
+  registers: "https://mywallet-api-5yz9.onrender.com/registers",
+};
 
 export { urls };
